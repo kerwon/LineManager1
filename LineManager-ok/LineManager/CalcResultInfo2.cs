@@ -15,8 +15,8 @@ namespace LineManager
 
             kuCunInfos.RemoveAll(m => m.Length == 0);
 
-            var lookupFaHuoInfos = faHuoTaskItems.Where(m => m.XingHao.Equals("500014666")).ToLookup(m => new { m.XingHao });
-            //var lookupFaHuoInfos = faHuoTaskItems.ToLookup(m => new { m.XingHao });
+            //var lookupFaHuoInfos = faHuoTaskItems.Where(m => m.XingHao.Equals("500014666")).ToLookup(m => new { m.XingHao });
+            var lookupFaHuoInfos = faHuoTaskItems.ToLookup(m => new { m.XingHao });
 
             foreach (var fahuoXingHaoGroup in lookupFaHuoInfos)
             {// 按发货指定型号分组
@@ -619,6 +619,7 @@ namespace LineManager
                     }
                 }
             }
+             
             return result;
         }
 

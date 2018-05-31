@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Condition>
-  <MinLeaveLength>100</MinLeaveLength>
-  <Length>500</Length>
-  <LessLengthCount>3</LessLengthCount>
-  <GEqualsLengthCount>2</GEqualsLengthCount>
-</Condition>

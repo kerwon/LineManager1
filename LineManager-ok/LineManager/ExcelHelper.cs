@@ -157,10 +157,18 @@ namespace LineManager
                     {
                         tmpInx++;
                         colIndex = 2;
+
+                        var paiLunHaoFlag = lineResultInfo.PaiHao.GetValueOrDefault() == 0 
+                                            ||lineResultInfo.LunHao.GetValueOrDefault() == 0;
+
+                        var paiLunHaoCell = paiLunHaoFlag
+                            ? "库存不足"
+                            : $"{lineResultInfo.PaiHao}排 {lineResultInfo.LunHao}轮";
+
                         if (brandFirst)
                         {
                             row.CreateCell(colIndex++).SetCellValue(lineResultInfo.Brand);
-                            row.CreateCell(colIndex++).SetCellValue($"{lineResultInfo.PaiHao}排 {lineResultInfo.LunHao}轮");
+                            row.CreateCell(colIndex++).SetCellValue(paiLunHaoCell);
                             row.CreateCell(colIndex++).SetCellValue(lineResultInfo.IsWheel);
                             row.CreateCell(colIndex++).SetCellValue(lineResultInfo.Length.GetValueOrDefault());
                             row.CreateCell(colIndex++).SetCellValue(lineResultInfo.LeaveLength.GetValueOrDefault());
@@ -173,7 +181,7 @@ namespace LineManager
                             var newRow = sheet.CreateRow(++rowIndex);
 
                             newRow.CreateCell(colIndex++).SetCellValue(lineResultInfo.Brand);
-                            newRow.CreateCell(colIndex++).SetCellValue($"{lineResultInfo.PaiHao}排 {lineResultInfo.LunHao}轮");
+                            newRow.CreateCell(colIndex++).SetCellValue(paiLunHaoCell);
                             newRow.CreateCell(colIndex++).SetCellValue(lineResultInfo.IsWheel);
                             newRow.CreateCell(colIndex++).SetCellValue(lineResultInfo.Length.GetValueOrDefault());
                             newRow.CreateCell(colIndex++).SetCellValue(lineResultInfo.LeaveLength.GetValueOrDefault());
